@@ -7,11 +7,12 @@ public class BallThrow : MonoBehaviour
 {
     [SerializeField] List<GameObject> projectTileList=new List<GameObject>();
     [SerializeField] float throwForce, throwForceProjectile,projectTileGravityScale;
+    [SerializeField] private AudioSource audioSource;
 
     Rigidbody2D rd;
     Vector2 startPosition;
     bool isShooting=false;
-
+    bool isthrowed=false;
     private void Awake()
     {
         rd=GetComponent<Rigidbody2D>();
@@ -19,16 +20,20 @@ public class BallThrow : MonoBehaviour
 
     private void Start()
     {
+        rd.isKinematic=true;
+        foreach (Transform item in FindObjectOfType<PlayerSpawner>().transform)
+        {
+            projectTileList.Add(item.gameObject);
+        }
         foreach (var item in projectTileList)
         {
-            // item.GetComponent<Renderer>().enabled=false;
-            item.transform.position=transform.position;
+            item.GetComponent<Renderer>().enabled=false;            
         }
     }
 
     private void Update()
     {
-        if(Input.GetAxis("Fire1")==1)
+        if(Input.GetAxis("Fire1")==1 && !isthrowed)
         {
             if (!isShooting)
             {
@@ -37,22 +42,30 @@ public class BallThrow : MonoBehaviour
             }
             else
             {
-                for (int i = 0; i < projectTileList.Count/2; i++)
+                for (int i = 0; i < projectTileList.Count-3; i++)
                 {
                     projectTileList[i].GetComponent<Renderer>().enabled=true;
                     projectTileList[i].transform.position=projectTilePath(transform.position,GetFroceProjectile(),i);
                 }
             }
         }
-        else if(isShooting)
+        else if(isShooting && !isthrowed)
         {
+            rd.isKinematic=false;
+            playerSound();
             rd.AddForce(GetFroce());
+            isthrowed=true;
             isShooting=false;
-            for (int i = 0; i < projectTileList.Count; i++)
-            {
-                projectTileList[i].GetComponent<Renderer>().enabled=false;
-            }
+            // for (int i = 0; i < projectTileList.Count; i++)
+            // {
+            //     projectTileList[i].GetComponent<Renderer>().enabled=false;
+            // }
         }
+    }
+
+    private void playerSound()
+    {
+        audioSource.PlayOneShot(audioSource.clip);
     }
 
     private Vector2 GetFroce()
