@@ -6,7 +6,7 @@ public class fadder : MonoBehaviour
 {    
     CanvasGroup group;
 
-    private void Start()
+    private void Awake()
     {
         group=GetComponent<CanvasGroup>();
     }

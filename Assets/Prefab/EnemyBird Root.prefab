@@ -59,7 +59,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 1
+  m_PointLightOuterRadius: 1.3400428
   m_PointLightDistance: 3
   m_PointLightQuality: 1
   m_ShapeLightParametricSides: 5
@@ -85,6 +85,7 @@ GameObject:
   - component: {fileID: 5370400427411290816}
   - component: {fileID: -1863770600656553156}
   - component: {fileID: 7400831095077476065}
+  - component: {fileID: 642968477249594402}
   m_Layer: 0
   m_Name: EnemyBird Root
   m_TagString: Untagged
@@ -218,3 +219,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   psObject: {fileID: 1444520458880331029, guid: dadcb4cb912f0d946b3e82eec9338643, type: 3}
+--- !u!95 &642968477249594402
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5370400427411290823}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 08d2fdf8defbe864a958b48ce686d90a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

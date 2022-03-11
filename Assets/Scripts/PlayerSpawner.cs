@@ -15,6 +15,11 @@ public class PlayerSpawner : MonoBehaviour
 
     public void GeneratePlayer()
     {
+        foreach(var item in FindObjectsOfType<BallThrow>())
+        {
+            Debug.Log("----- Player generate "+item.name);
+        }
+
         // GameObject gameObject1 = GameObject.FindWithTag("Player");
         // if (gameObject1 != null)
         // {

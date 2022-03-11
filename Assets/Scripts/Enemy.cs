@@ -6,7 +6,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {    
     [SerializeField] ParticleSystem psObject;
-
+        
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.collider.CompareTag("GameController"))
